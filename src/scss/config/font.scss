@@ -1,0 +1,8 @@
+$g-fonts:(
+    alpha: "'Playfair Display', serif",
+    bravo: "'Quicksand', sans-serif"
+);
+
+@function font($key) {
+    @return unquote(map-get($g-fonts, $key));
+}

@@ -1,0 +1,45 @@
+{
+  "name": "michaelmano.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/mocha/bin/mocha --compilers js:babel-core/register tests/js/*.test.js --colors --recursive --reporter spec -r node_modules/jsdom-global/register",
+    "dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules",
+    "watch": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules",
+    "watch-poll": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --watch-poll --progress --hide-modules",
+    "production": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --optimize-minimize --progress --hide-modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelmano/michaelmano.github.io.git"
+  },
+  "keywords": [],
+  "author": "Michael Mano <michael.mano26@gmail.com",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/michaelmano/michaelmano.github.io/issues"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.4.0",
+    "cross-env": "^4.0.0",
+    "css-loader": "^0.28.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "jsdom-global": "^2.1.1",
+    "node-sass": "^4.5.3",
+    "postcss-cssnext": "^2.11.0",
+    "postcss-import": "^10.0.0",
+    "postcss-loader": "^2.0.5",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1",
+    "url-loader": "^0.5.8",
+    "vue": "^2.3.3",
+    "vue-loader": "^12.1.0",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.4.1"
+  },
+  "homepage": "https://github.com/michaelmano/michaelmano.github.io"
+}
