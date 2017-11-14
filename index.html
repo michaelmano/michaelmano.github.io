@@ -9,13 +9,14 @@
         <link rel="stylesheet" href="build/css/app.css">
     </head>
     <body class="Body">
-        <div id="app">
+        <div id="app" :class="['App', loaded ? '' : 'is-loading']">
             <vue-header :loaded="loaded"></vue-header>
             <div class="Container">
-                <div class="Box">
-                    <h2>Bio:</h2>
-                    <p>Hello, My name is Michael and I am a full stack developer based in Brisbane/Australia.</p>
+                <div class="Box Box--centered">
+                    <h1>Hi, I'm Michael.</h1>
+                    <p>I am a full stack develop who loves working with the latest technology</p>
                 </div>
+                <vue-projects></vue-projects>
             </div>
         </div>
         <script src="build/js/app.js"></script>

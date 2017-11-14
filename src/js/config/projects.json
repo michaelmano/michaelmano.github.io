@@ -1,0 +1,246 @@
+[
+    {
+        "title":"ACF Visual Studio Extension",
+        "thumbnail":"build/images/acf-visual-studio-min.jpg",
+        "link":"https://marketplace.visualstudio.com/items?itemName=anthonydiametrix.ACF-Snippet",
+        "body":"This is a project I worked on for the new code editor Visual Studio Code by Microsoft, I ended up creating all the fields for the plugin Advanced Custom Fields in a simple to use plugin that installs snippets on the users editor.",
+        "tags": [
+            "Extension",
+            "JavaScript",
+            "PHP"
+        ]
+    },
+    {
+        "title":"PX TO EM Atom Extension",
+        "thumbnail":"build/images/px-to-em-min.jpg",
+        "link":"https://github.com/michaelmano/atom-px-to-ems",
+        "body":"This is a project I worked on for editor Atom by Gibhub. This is an extension that converts the current line you are on into REMs or EM's.",
+        "tags": [
+            "Extension",
+            "JavaScript"
+        ]
+    },
+    {
+        "title":"WPAuto",
+        "thumbnail":"build/images/wpauto-min.jpg",
+        "link":"https://www.npmjs.com/package/wpauto/",
+        "body":"WPAuto is a program written in NodeJS That Automates the whole process of installing Wordpress. (currently at 1000+ downloads) It downloads the latest version of Wordpress, Extracts it, Tries MySQL's default user/pass and if not it questions the user for input. it then re-writes the wp-config.php file with the correct information. It also has support to install your theme.",
+        "tags": [
+            "NodeJS",
+            "JavaScript",
+            "Automation"
+        ]
+    },
+    {
+        "title":"WinterM",
+        "thumbnail":"build/images/winterm-min.jpg",
+        "link":"https://atom.io/packages/winterm",
+        "body":"Another Atom extension I wrote that just opens a terminal in your current working directory or project folder.",
+        "tags": [
+            "NodeJS",
+            "Extension",
+            "Automation"
+        ]
+    },
+    {
+        "title":"Pitaya - Wordpress starter theme",
+        "thumbnail":"build/images/pitaya-min.jpg",
+        "link": "https://github.com/michaelmano/Pitaya",
+        "body":"This is my Wordpress starter theme. It is not currently 100% complete however it uses the BEM naming structure for SASS/CSS and has a few functions I have written to save time and also a custom theme settings page which I have made simple to add new fields to.",
+        "tags": [
+            "Wordpress",
+            "Theme",
+            "PHP"
+        ]
+    },
+    {
+        "title": "Melbas on the Park",
+        "thumbnail":"build/images/melbas-min.jpg",
+        "link": "http://www.melbas.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Austrex",
+        "thumbnail":"build/images/austrex-min.jpg",
+        "link": "http://www.austrex.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Tessellate Advisory",
+        "thumbnail":"build/images/tessellateadvisory-min.jpg",
+        "link": "https://www.tessellateadvisory.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Anise Event Catering",
+        "thumbnail":"build/images/byronbay-catering-min.jpg",
+        "link": "http://www.byronbay-catering.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Taree Orthodontics",
+        "thumbnail":"build/images/tareeorthodontics-min.jpg",
+        "link": "http://www.tareeorthodontics.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "ASAP NOW",
+        "thumbnail":"build/images/asapnow-min.jpg",
+        "link": "http://www.asapnow.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Dean White",
+        "thumbnail":"build/images/deanwhite-min.jpg",
+        "link": "http://www.deanwhite.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Siana Dental",
+        "thumbnail":"build/images/sianadental-min.jpg",
+        "link": "http://www.sianadental.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Triple J Tours",
+        "thumbnail":"build/images/triplejtours-min.jpg",
+        "link": "http://www.triplejtours.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Clarion Hotel",
+        "thumbnail":"build/images/mackayaccommodation-min.jpg",
+        "link": "http://www.mackayaccommodation.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Kakadu Tours",
+        "thumbnail":"build/images/kakadutoursandtravel-min.jpg",
+        "link": "http://www.kakadutoursandtravel.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "East Kimberly Tours",
+        "thumbnail":"build/images/eastkimberleytours-min.jpg",
+        "link": "http://www.eastkimberleytours.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Target Transport",
+        "thumbnail":"build/images/targettransport-min.jpg",
+        "link": "http://www.targettransport.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Kedron Smash Repairs",
+        "thumbnail":"build/images/kedronsmashrepairs-min.jpg",
+        "link": "http://www.kedronsmashrepairs.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Feel The Lean",
+        "thumbnail":"build/images/feelthelean-min.jpg",
+        "link": "http://www.feelthelean.com",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Evans and CO",
+        "thumbnail":"build/images/evansandcompany-min.jpg",
+        "link": "http://www.evansandcompany.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "A1 Debt Assistance",
+        "thumbnail":"build/images/a1debtassistance-min.jpg",
+        "link": "http://www.a1debtassistance.com/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Generation Physio",
+        "thumbnail":"build/images/genphysio-min.jpg",
+        "link": "http://www.genphysio.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    },
+    {
+        "title": "Lory Group",
+        "thumbnail":"build/images/lorygroup-min.jpg",
+        "link": "http://www.lorygroup.com.au/",
+        "body":"",
+        "tags": [
+            "Website",
+            "Wordpress"
+        ]
+    }
+]

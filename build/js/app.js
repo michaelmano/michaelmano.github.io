@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -291,6 +291,103 @@ module.exports = g;
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9905,24 +10002,24 @@ function getOuterHTML(el) {
 Vue$3.compile = compileToFunctions;
 
 exports.default = Vue$3;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(1), __webpack_require__(7).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(1), __webpack_require__(11).setImmediate))
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(9)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(5),
+  __webpack_require__(8),
   /* template */
-  __webpack_require__(10),
+  __webpack_require__(39),
   /* styles */
   null,
   /* scopeId */
@@ -9954,7 +10051,94 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 5 */
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(9),
+  /* template */
+  __webpack_require__(38),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/mmano/Development/Projects/michaelmano.github.io/src/js/vue/components/Projects.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Projects.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14a3e3a6", Component.options)
+  } else {
+    hotAPI.reload("data-v-14a3e3a6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./logo.svg": 13,
+	"./projects/acf-visual-studio-min.jpg": 14,
+	"./projects/pitaya-min.jpg": 15,
+	"./projects/px-to-em-min.jpg": 16,
+	"./projects/winterm-min.jpg": 17,
+	"./projects/wpauto-min.jpg": 18,
+	"./websites/a1debtassistance-min.jpg": 19,
+	"./websites/asapnow-min.jpg": 20,
+	"./websites/austrex-min.jpg": 21,
+	"./websites/byronbay-catering-min.jpg": 22,
+	"./websites/deanwhite-min.jpg": 23,
+	"./websites/eastkimberleytours-min.jpg": 24,
+	"./websites/evansandcompany-min.jpg": 25,
+	"./websites/feelthelean-min.jpg": 26,
+	"./websites/genphysio-min.jpg": 27,
+	"./websites/kakadutoursandtravel-min.jpg": 28,
+	"./websites/kedronsmashrepairs-min.jpg": 29,
+	"./websites/lorygroup-min.jpg": 30,
+	"./websites/mackayaccommodation-min.jpg": 31,
+	"./websites/melbas-min.jpg": 32,
+	"./websites/sianadental-min.jpg": 33,
+	"./websites/tareeorthodontics-min.jpg": 34,
+	"./websites/targettransport-min.jpg": 35,
+	"./websites/tessellateadvisory-min.jpg": 36,
+	"./websites/triplejtours-min.jpg": 37
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 7;
+
+/***/ }),
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9986,7 +10170,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 6 */
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_projects_json__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_projects_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__config_projects_json__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data() {
+        return {
+            projects: __WEBPACK_IMPORTED_MODULE_0__config_projects_json___default.a
+        };
+    },
+    computed: {
+        tags: function () {
+            let tags = ['All'];
+            __WEBPACK_IMPORTED_MODULE_0__config_projects_json___default.a.forEach(project => {
+                project.active = true;
+                tags = [...tags, ...project.tags];
+            });
+            return [...new Set(tags)];
+        }
+    },
+    methods: {
+        filter(tag, event) {
+            this.$refs['tags'].forEach(element => {
+                element.classList.remove('is-active');
+            });
+            event.target.classList.add('is-active');
+
+            this.projects.forEach(project => {
+                if (tag === 'All') {
+                    project.active = true;
+                } else {
+                    project.active = project.tags.includes(tag);
+                }
+            });
+            this.$forceUpdate();
+        }
+    }
+});
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10177,7 +10425,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(0)))
 
 /***/ }),
-/* 7 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10231,137 +10479,253 @@ exports._unrefActive = exports.active = function (item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(6);
+__webpack_require__(10);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 /***/ }),
-/* 8 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(3);
+__webpack_require__(4);
 
-var _vue = __webpack_require__(2);
+var _vue = __webpack_require__(3);
 
 var _vue2 = _interopRequireDefault(_vue);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_vue2.default.component('vue-header', __webpack_require__(4));
+__webpack_require__(7);
+
+_vue2.default.component('vue-header', __webpack_require__(5));
+_vue2.default.component('vue-projects', __webpack_require__(6));
 
 var app = new _vue2.default({
     el: '#app',
     data: {
-        loaded: sessionStorage.getItem('loaded')
+        loaded: sessionStorage.getItem('loaded') ? true : false
+    },
+    watch: {
+        loaded: function loaded(value) {
+            console.log(value);
+        }
     }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (!app.loaded) sessionStorage.setItem('loaded', true);
+    if (!app.loaded) {
+        sessionStorage.setItem('loaded', true);
+        setTimeout(function () {
+            app.loaded = true;
+        }, 3250);
+    }
 });
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports) {
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/* globals __VUE_SSR_CONTEXT__ */
+module.exports = __webpack_require__.p + "images/logo.svg";
 
-// this module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
+module.exports = __webpack_require__.p + "images/acf-visual-studio-min.jpg";
 
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
 
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
+module.exports = __webpack_require__.p + "images/pitaya-min.jpg";
 
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-  }
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
 
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
+module.exports = __webpack_require__.p + "images/px-to-em-min.jpg";
 
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/winterm-min.jpg";
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/wpauto-min.jpg";
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/a1debtassistance-min.jpg";
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/asapnow-min.jpg";
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/austrex-min.jpg";
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/byronbay-catering-min.jpg";
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/deanwhite-min.jpg";
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/eastkimberleytours-min.jpg";
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/evansandcompany-min.jpg";
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/feelthelean-min.jpg";
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/genphysio-min.jpg";
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/kakadutoursandtravel-min.jpg";
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/kedronsmashrepairs-min.jpg";
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/lorygroup-min.jpg";
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/mackayaccommodation-min.jpg";
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/melbas-min.jpg";
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/sianadental-min.jpg";
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/tareeorthodontics-min.jpg";
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/targettransport-min.jpg";
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/tessellateadvisory-min.jpg";
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "images/triplejtours-min.jpg";
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', {
+    staticClass: "Box Box--centered"
+  }, [_c('h2', [_vm._v("Project Portfolio")]), _vm._v(" "), _c('div', {
+    staticClass: "Filter"
+  }, _vm._l((_vm.tags), function(tag, index) {
+    return _c('span', {
+      ref: "tags",
+      refInFor: true,
+      class: ['Filter__tag', index === 0 ? 'is-active' : ''],
+      domProps: {
+        "textContent": _vm._s(tag)
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.filter(tag, $event)
+        }
       }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
+    })
+  })), _vm._v(" "), _c('div', {
+    staticClass: "Project"
+  }, _vm._l((_vm.projects), function(project) {
+    return _c('article', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (project.active),
+        expression: "project.active"
+      }],
+      staticClass: "Project__panel"
+    }, [_vm._v("\n            " + _vm._s(project.active) + "\n            " + _vm._s(project.title) + "\n            " + _vm._s(project.body) + "\n            " + _vm._s(project.link) + "\n            "), _c('img', {
+      attrs: {
+        "src": project.thumbnail
       }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
+    })])
+  }))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-14a3e3a6", module.exports)
   }
 }
 
-
 /***/ }),
-/* 10 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10381,6 +10745,12 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-70abe180", module.exports)
   }
 }
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports) {
+
+module.exports = [{"title":"ACF Visual Studio Extension","thumbnail":"build/images/acf-visual-studio-min.jpg","link":"https://marketplace.visualstudio.com/items?itemName=anthonydiametrix.ACF-Snippet","body":"This is a project I worked on for the new code editor Visual Studio Code by Microsoft, I ended up creating all the fields for the plugin Advanced Custom Fields in a simple to use plugin that installs snippets on the users editor.","tags":["Extension","JavaScript","PHP"]},{"title":"PX TO EM Atom Extension","thumbnail":"build/images/px-to-em-min.jpg","link":"https://github.com/michaelmano/atom-px-to-ems","body":"This is a project I worked on for editor Atom by Gibhub. This is an extension that converts the current line you are on into REMs or EM's.","tags":["Extension","JavaScript"]},{"title":"WPAuto","thumbnail":"build/images/wpauto-min.jpg","link":"https://www.npmjs.com/package/wpauto/","body":"WPAuto is a program written in NodeJS That Automates the whole process of installing Wordpress. (currently at 1000+ downloads) It downloads the latest version of Wordpress, Extracts it, Tries MySQL's default user/pass and if not it questions the user for input. it then re-writes the wp-config.php file with the correct information. It also has support to install your theme.","tags":["NodeJS","JavaScript","Automation"]},{"title":"WinterM","thumbnail":"build/images/winterm-min.jpg","link":"https://atom.io/packages/winterm","body":"Another Atom extension I wrote that just opens a terminal in your current working directory or project folder.","tags":["NodeJS","Extension","Automation"]},{"title":"Pitaya - Wordpress starter theme","thumbnail":"build/images/pitaya-min.jpg","link":"https://github.com/michaelmano/Pitaya","body":"This is my Wordpress starter theme. It is not currently 100% complete however it uses the BEM naming structure for SASS/CSS and has a few functions I have written to save time and also a custom theme settings page which I have made simple to add new fields to.","tags":["Wordpress","Theme","PHP"]},{"title":"Melbas on the Park","thumbnail":"build/images/melbas-min.jpg","link":"http://www.melbas.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Austrex","thumbnail":"build/images/austrex-min.jpg","link":"http://www.austrex.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Tessellate Advisory","thumbnail":"build/images/tessellateadvisory-min.jpg","link":"https://www.tessellateadvisory.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Anise Event Catering","thumbnail":"build/images/byronbay-catering-min.jpg","link":"http://www.byronbay-catering.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Taree Orthodontics","thumbnail":"build/images/tareeorthodontics-min.jpg","link":"http://www.tareeorthodontics.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"ASAP NOW","thumbnail":"build/images/asapnow-min.jpg","link":"http://www.asapnow.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Dean White","thumbnail":"build/images/deanwhite-min.jpg","link":"http://www.deanwhite.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Siana Dental","thumbnail":"build/images/sianadental-min.jpg","link":"http://www.sianadental.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Triple J Tours","thumbnail":"build/images/triplejtours-min.jpg","link":"http://www.triplejtours.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Clarion Hotel","thumbnail":"build/images/mackayaccommodation-min.jpg","link":"http://www.mackayaccommodation.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Kakadu Tours","thumbnail":"build/images/kakadutoursandtravel-min.jpg","link":"http://www.kakadutoursandtravel.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"East Kimberly Tours","thumbnail":"build/images/eastkimberleytours-min.jpg","link":"http://www.eastkimberleytours.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Target Transport","thumbnail":"build/images/targettransport-min.jpg","link":"http://www.targettransport.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Kedron Smash Repairs","thumbnail":"build/images/kedronsmashrepairs-min.jpg","link":"http://www.kedronsmashrepairs.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Feel The Lean","thumbnail":"build/images/feelthelean-min.jpg","link":"http://www.feelthelean.com","body":"","tags":["Website","Wordpress"]},{"title":"Evans and CO","thumbnail":"build/images/evansandcompany-min.jpg","link":"http://www.evansandcompany.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"A1 Debt Assistance","thumbnail":"build/images/a1debtassistance-min.jpg","link":"http://www.a1debtassistance.com/","body":"","tags":["Website","Wordpress"]},{"title":"Generation Physio","thumbnail":"build/images/genphysio-min.jpg","link":"http://www.genphysio.com.au/","body":"","tags":["Website","Wordpress"]},{"title":"Lory Group","thumbnail":"build/images/lorygroup-min.jpg","link":"http://www.lorygroup.com.au/","body":"","tags":["Website","Wordpress"]}]
 
 /***/ })
 /******/ ]);

@@ -1,0 +1,42 @@
+.Filter {
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: color(charlie);
+}
+
+.Filter__tag {
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.15rem;
+    background-color: #424242;
+    color: color(alpha);
+    font-size: 0.75rem;
+    line-height: 1;
+    margin: 0 2px;
+    font-family: font(alpha);
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:before {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 0;
+        bottom: 0;
+        max-width: 0;
+        background: rgba(255,255,255,0.2);
+    }
+
+    &:active,
+    &.is-active,
+    &:hover {
+        &:before {
+            max-width: 100%;
+            transition: 250ms ease-in-out max-width;
+            right: 0;
+        }
+    }
+}
