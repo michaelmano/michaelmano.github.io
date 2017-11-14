@@ -1,0 +1,9 @@
+$g-colors: (
+    alpha: '#FFFFFF',
+    bravo: '#000000',
+    charlie: '#212121'
+);
+
+@function color($key) {
+    @return unquote(map-get($g-colors, $key));
+}

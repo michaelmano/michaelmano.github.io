@@ -1,4 +1,27 @@
-@import url(https://fonts.googleapis.com/css?family=Playfair+Display|Quicksand);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display|Quicksand);@-webkit-keyframes header-animation {
+  from {
+    height: 100%; }
+  to {
+    height: 64px;
+    height: 4rem; } }
+@keyframes header-animation {
+  from {
+    height: 100%; }
+  to {
+    height: 64px;
+    height: 4rem; } }
+@-webkit-keyframes logo-animation {
+  from {
+    padding: 0; }
+  to {
+    padding: 30px;
+    padding: 1.875rem; } }
+@keyframes logo-animation {
+  from {
+    padding: 0; }
+  to {
+    padding: 30px;
+    padding: 1.875rem; } }
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -30,22 +53,84 @@ table {
   border-spacing: 0; }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif; }
-.Body {
+.Body,
+#app {
   font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden; }
+.Box {
+  padding: 20px;
+  padding: 1.25rem;
+  margin-top: 20px;
+  margin-top: 1.25rem; }
+.Container {
+  max-width: 1600px;
+  max-width: 100rem;
+  margin: 0 auto; }
+.Container h1, .Container h2, .Container h3, .Container h4, .Container h5, .Container h6 {
+    margin-bottom: 10px;
+    margin-bottom: 0.625rem; }
+.Header {
+  width: 100%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
-  height: 100vh; }
+  background-color: #212121;
+  -webkit-animation-name: header-animation;
+          animation-name: header-animation;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 1.25s;
+          animation-duration: 1.25s; }
+.Header--loaded {
+    -webkit-animation: none !important;
+            animation: none !important;
+    height: 64px;
+    height: 4rem; }
+.Logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  width: 100px;
+  width: 6.25rem;
+  height: 100px;
+  height: 6.25rem;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  transition: 250ms ease-in-out padding; }
+.Logo svg {
+    width: 51.2px;
+    width: 3.2rem;
+    -webkit-animation-name: logo-animation;
+            animation-name: logo-animation;
+    -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-animation-duration: 1.25s;
+            animation-duration: 1.25s; }
+.Logo--loaded svg {
+    padding: 30px;
+    padding: 1.875rem;
+    -webkit-animation: none;
+            animation: none; }
 
 /*# sourceMappingURL=app.css.map*/

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -9905,25 +9905,24 @@ function getOuterHTML(el) {
 Vue$3.compile = compileToFunctions;
 
 exports.default = Vue$3;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(1), __webpack_require__(8).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(1), __webpack_require__(7).setImmediate))
 
 /***/ }),
-/* 3 */,
-/* 4 */
+/* 3 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(10)(
+var Component = __webpack_require__(9)(
   /* script */
-  __webpack_require__(6),
+  __webpack_require__(5),
   /* template */
-  __webpack_require__(11),
+  __webpack_require__(10),
   /* styles */
   null,
   /* scopeId */
@@ -9931,9 +9930,9 @@ var Component = __webpack_require__(10)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/mmano/Development/Projects/michaelmano.github.io/src/js/vue/App.vue"
+Component.options.__file = "/Users/mmano/Development/Projects/michaelmano.github.io/src/js/vue/components/Header.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Header.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -9942,9 +9941,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4b2229bb", Component.options)
+    hotAPI.createRecord("data-v-70abe180", Component.options)
   } else {
-    hotAPI.reload("data-v-4b2229bb", Component.options)
+    hotAPI.reload("data-v-70abe180", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -9955,7 +9954,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9966,19 +9965,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data() {
-        return {};
+    props: {
+        loaded: {
+            type: Boolean
+        }
     },
-    mounted() {
-        console.log('test');
+    data() {
+        return {
+            title: "Michael Mano - Developer",
+            logo: `
+                <svg id="logo" viewBox="0 0 620 823">
+                    <path d="M1 165C1 111.662.993 58.323 1.042 4.985 1.043 3.656 1.667 2.328 2 1c1.19 1.307 2.252 2.764 3.588 3.899 98.106 83.405 196.234 166.787 294.364 250.166 3.645 3.096 7.33 6.145 11.089 9.293 2.124-1.778 3.913-3.255 5.681-4.757 99.649-84.677 199.3-169.354 298.928-254.056C617.239 4.194 618.556 2.522 620 1c.333 1.333.956 2.666.958 4 .052 40 .042 80 .042 120v328c-1.051.801-2.145 1.552-3.146 2.41-100.904 86.331-201.802 172.671-302.702 259.007-1.354 1.158-2.751 2.266-4.236 3.487L135 567.375V824h-1c-.617-.729-1.128-1.596-1.868-2.164C88.434 788.208 44.716 754.605 1 721V288l309.837 265.152c.845-.6 1.405-.935 1.895-1.354 57.227-48.951 114.462-97.894 171.592-146.957 1.48-1.272 2.559-3.882 2.566-5.872.148-38.658.113-77.317.094-115.976-.001-1.206-.243-2.413-.434-4.185L311.141 427.85c-1.179-.898-2.117-1.549-2.982-2.284-86.969-73.9-173.92-147.822-260.904-221.705C31.907 190.825 16.422 177.949 1 165z"></path>
+                    <path d="M488 824c.01-49.821-.018-99.644.148-149.465.008-2.305 1.124-5.296 2.783-6.804C534.202 628.394 577.613 589.21 621 550v155c-.538.381-1.121.711-1.606 1.149a235728.783 235728.783 0 0 0-127.366 115.192c-.813.735-1.357 1.766-2.027 2.658L488 824z" fill="#469b96"></path>
+                </svg>
+            `
+        };
     }
 });
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10169,7 +10177,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(0)))
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10223,38 +10231,40 @@ exports._unrefActive = exports.active = function (item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(7);
+__webpack_require__(6);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(4);
+__webpack_require__(3);
 
 var _vue = __webpack_require__(2);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _data = __webpack_require__(12);
-
-var _data2 = _interopRequireDefault(_data);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_vue2.default.component('vue-app', __webpack_require__(5));
+_vue2.default.component('vue-header', __webpack_require__(4));
 
-new _vue2.default({
+var app = new _vue2.default({
     el: '#app',
-    data: _data2.default
+    data: {
+        loaded: sessionStorage.getItem('loaded')
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (!app.loaded) sessionStorage.setItem('loaded', true);
 });
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -10351,37 +10361,26 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('h1', [_vm._v("Website under contruction")]), _vm._v(" "), _c('p', [_vm._v("Check back later")])])
-}]}
+  return _c('header', {
+    class: ['Header', _vm.loaded ? 'Header--loaded' : '']
+  }, [_c('h1', {
+    class: ['Logo', _vm.loaded ? 'Logo--loaded' : ''],
+    domProps: {
+      "innerHTML": _vm._s(_vm.logo)
+    }
+  })])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4b2229bb", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-70abe180", module.exports)
   }
 }
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var _module = function module() {
-    return {};
-};
-
-exports.default = _module;
 
 /***/ })
 /******/ ]);

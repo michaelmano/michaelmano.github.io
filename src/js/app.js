@@ -1,11 +1,15 @@
 import '../scss/app.scss';
 import Vue from 'vue';
 
-import data from './vue/lib/data';
+Vue.component('vue-header', require('./vue/components/Header.vue'));
 
-Vue.component('vue-app', require('./vue/App.vue'));
-
-new Vue({
+const app = new Vue({
     el: '#app',
-    data,
+    data: {
+        loaded: sessionStorage.getItem('loaded'),
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    if (!app.loaded) sessionStorage.setItem('loaded', true);
 });
