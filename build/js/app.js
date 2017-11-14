@@ -10195,13 +10195,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data() {
         return {
-            projects: __WEBPACK_IMPORTED_MODULE_0__config_projects_json___default.a
+            projects: []
         };
     },
     computed: {
@@ -10214,6 +10216,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return [...new Set(tags)];
         }
     },
+    mounted() {
+        this.projects = __WEBPACK_IMPORTED_MODULE_0__config_projects_json___default.a;
+    },
+    watch: {
+        projects: {
+            handler: function (value) {},
+            deep: true
+        }
+    },
     methods: {
         filter(tag, event) {
             this.$refs['tags'].forEach(element => {
@@ -10221,14 +10232,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             event.target.classList.add('is-active');
 
-            this.projects.forEach(project => {
+            __WEBPACK_IMPORTED_MODULE_0__config_projects_json___default.a.forEach(project => {
                 if (tag === 'All') {
                     project.active = true;
                 } else {
                     project.active = project.tags.includes(tag);
                 }
             });
-            this.$forceUpdate();
         }
     }
 });
@@ -10700,7 +10710,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   })), _vm._v(" "), _c('div', {
     staticClass: "Project"
-  }, _vm._l((_vm.projects), function(project) {
+  }, [_c('transition-group', {
+    attrs: {
+      "enter-active-class": "Animation Animation--bounce"
+    }
+  }, _vm._l((_vm.projects), function(project, index) {
     return _c('article', {
       directives: [{
         name: "show",
@@ -10708,13 +10722,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         value: (project.active),
         expression: "project.active"
       }],
+      key: index,
       staticClass: "Project__panel"
-    }, [_vm._v("\n            " + _vm._s(project.active) + "\n            " + _vm._s(project.title) + "\n            " + _vm._s(project.body) + "\n            " + _vm._s(project.link) + "\n            "), _c('img', {
+    }, [_vm._v("\n                " + _vm._s(project.active) + "\n                " + _vm._s(project.title) + "\n                " + _vm._s(project.body) + "\n                " + _vm._s(project.link) + "\n                "), _c('img', {
       attrs: {
         "src": project.thumbnail
       }
     })])
-  }))])
+  }))], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
